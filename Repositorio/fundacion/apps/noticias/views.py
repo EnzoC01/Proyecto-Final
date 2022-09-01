@@ -1,3 +1,4 @@
+from pickle import FALSE
 from django.shortcuts import render
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
@@ -22,9 +23,11 @@ def Listar(request):
 
 	return render(request,'noticias/listar_noticias.html',ctx)
 
-class Detalle_Noticia(LoginRequiredMixin, DetailView):
+
+class Detalle_Noticia(DetailView):
 	model = Noticia
 	template_name = 'noticias/detalle_noticia.html'
+	
 
 def Agregar_Comentario(request,pk):
 	texto_comentario = request.POST.get('comment')
